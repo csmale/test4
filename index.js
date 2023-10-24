@@ -6,3 +6,20 @@ import App from './App';
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately
 registerRootComponent(App);
+
+Navigation.registerComponent('eu.colinsmale.gatemaster', () => App);
+Navigation.events().registerAppLaunchedListener(() => {
+   Navigation.setRoot({
+     root: {
+       stack: {
+         children: [
+           {
+             component: {
+               name: 'eu.colinsmale.gatemaster'
+             }
+           }
+         ]
+       }
+     }
+  });
+});
